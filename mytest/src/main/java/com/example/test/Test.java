@@ -10,13 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 
 /**
  * Servlet implementation class Test
  */
 public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	final static Logger logger = Logger.getLogger(Test.class);
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,6 +34,9 @@ public class Test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		final String path = "resources/log4j.properties";
+		PropertyConfigurator.configure(path);
+		logger.info("\n\nSuccessfully initialized logger.");
 		ActiveCampaignPOCount objActiveCampaignCount = new ActiveCampaignPOCount();
 		String outFilePath = "/downloads/" ;
 
