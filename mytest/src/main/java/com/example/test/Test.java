@@ -34,7 +34,7 @@ public class Test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		final String path = "/src/main/resources/log4j.properties";
+		final String path = "src/main/resources/log4j.properties";
 		PropertyConfigurator.configure(path);
 		logger.info("\n\nSuccessfully initialized logger.");
 		ActiveCampaignPOCount objActiveCampaignCount = new ActiveCampaignPOCount();
