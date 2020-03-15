@@ -34,7 +34,7 @@ public class Test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		final String path = "resources/log4j.properties";
+		final String path = "/src/main/resources/log4j.properties";
 		PropertyConfigurator.configure(path);
 		logger.info("\n\nSuccessfully initialized logger.");
 		ActiveCampaignPOCount objActiveCampaignCount = new ActiveCampaignPOCount();
@@ -42,7 +42,7 @@ public class Test extends HttpServlet {
 
 		objActiveCampaignCount.executeAudit("/Users/neelghodasara/OneDrive - Cox Communications/nghodasa/NormalizedCampaigns-20200312.csv",outFilePath, new HashMap<String, String>());
 		
-		response.getWriter().append("Heelllooo at: ").append(request.getContextPath());
+		response.getWriter().append("Heelllooo testing ho: ").append(request.getContextPath());
 	}
 
 	/**
