@@ -45,7 +45,7 @@ public class Test extends HttpServlet {
 
 	    //load the configuration for this application's loggers using the
 	    // servletLog.properties file
-	    PropertyConfigurator.configure(realPath + "src/main/resources/log4j.properties");
+	    PropertyConfigurator.configure(realPath + "mytest/src/main/resources/log4j.properties");
 	        //+ "WEB-INF/classes/servletLog.properties");
 	    //create the logger for this servlet class
 	    //it will use the configuration for the logger com.java2s.LoggerServlet
