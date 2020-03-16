@@ -1,9 +1,13 @@
 package com.example.test;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
+import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,22 +39,11 @@ public class Test extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	    String realPath = getServletContext().getRealPath("/");
-	    String fileSep = System.getProperty("file.separator");
-
-	    if (realPath != null && (!realPath.endsWith(fileSep)))
-	      realPath = realPath + fileSep;
-
-	    System.out.println(realPath);
-
-	    //load the configuration for this application's loggers using the
-	    // servletLog.properties file
-	    PropertyConfigurator.configure(realPath + "mytest/src/main/resources/log4j.properties");
-	        //+ "WEB-INF/classes/servletLog.properties");
-	    //create the logger for this servlet class
-	    //it will use the configuration for the logger com.java2s.LoggerServlet
-	    //or inherit from the logger com.java2s if one exists, and so on
-
+		File configDir = new File(System.getProperty("catalina.base"), "conf");
+		File configFile = new File(configDir, "log4j.properties");
+		InputStream stream = new FileInputStream(configFile);
+		Properties props = new Properties();
+		props.load(stream);
 	    
 		//final String path = "src/main/resources/log4j.properties";
 		//PropertyConfigurator.configure(path);
