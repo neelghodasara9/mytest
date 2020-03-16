@@ -34,8 +34,26 @@ public class Test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		final String path = "src/main/resources/log4j.properties";
-		PropertyConfigurator.configure(path);
+		
+	    String realPath = getServletContext().getRealPath("/");
+	    String fileSep = System.getProperty("file.separator");
+
+	    if (realPath != null && (!realPath.endsWith(fileSep)))
+	      realPath = realPath + fileSep;
+
+	    System.out.println(realPath);
+
+	    //load the configuration for this application's loggers using the
+	    // servletLog.properties file
+	    PropertyConfigurator.configure(realPath + "src/main/resources/log4j.properties");
+	        //+ "WEB-INF/classes/servletLog.properties");
+	    //create the logger for this servlet class
+	    //it will use the configuration for the logger com.java2s.LoggerServlet
+	    //or inherit from the logger com.java2s if one exists, and so on
+
+	    
+		//final String path = "src/main/resources/log4j.properties";
+		//PropertyConfigurator.configure(path);
 		logger.info("\n\nSuccessfully initialized logger.");
 		ActiveCampaignPOCount objActiveCampaignCount = new ActiveCampaignPOCount();
 		String outFilePath = "/downloads/" ;
